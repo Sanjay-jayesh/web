@@ -1,0 +1,30 @@
+const mediaItems = [
+  { type: 'image', src: require('../images/car1.jpg') },
+  { type: 'image', src: require('../images/car2.jpg') },
+  { type: 'image', src: require('../images/car21.jpg') },
+  { type: 'image', src: require('../images/car4.jpg') },
+  { type: 'image', src: require('../images/car5.jpg') },
+  { type: 'image', src: require('../images/car6.jpg') },
+  { type: 'image', src: require('../images/car7.jpg') },
+  { type: 'image', src: require('../images/car8.jpg') },
+  { type: 'image', src: require('../images/car9.jpg') },
+  { type: 'image', src: require('../images/car10.jpg') },
+  { type: 'image', src: require('../images/car11.jpg') },
+  { type: 'image', src: require('../images/car12.jpg') },
+  { type: 'image', src: require('../images/car13.jpg') },
+  { type: 'image', src: require('../images/car14.jpg') },
+  { type: 'image', src: require('../images/car15.jpg') },
+  { type: 'image', src: require('../images/car16.jpg') },
+  { type: 'image', src: require('../images/car17.jpg') },
+  { type: 'image', src: require('../images/car18.jpg') },
+  { type: 'image', src: require('../images/car19.jpg') },
+  { type: 'image', src: require('../images/car3.jpg') },
+  { type: 'image', src: require('../images/car22.jpg') },
+  { type: 'image', src: require('../images/car23.jpg') },
+  { type: 'image', src: require('../images/car24.jpg') },
+  { type: 'image', src: require('../images/car25.jpg') },
+  { type: 'image', src: require('../images/car26.jpg') },
+  { type: 'video', src: require('../videos/vid4.mp4') }
+];
+
+export default mediaItems;
