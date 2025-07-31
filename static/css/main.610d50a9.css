@@ -1,0 +1,2 @@
+*{box-sizing:border-box;font-family:Encode Sans Expanded,sans-serif;margin:0;padding:0}.desktop-only{display:block}@media screen and (max-width:768px){.mobile-only{display:block}.desktop-only{display:none}}.about-text{font-family:Arial,sans-serif!important}.desktop-only{display:flex}.mobile-only{display:none}@media screen and (max-width:768px){.desktop-only{display:none!important}.mobile-only{display:flex!important;gap:20px;justify-content:center}}
+/*# sourceMappingURL=main.610d50a9.css.map*/
