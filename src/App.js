@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages';
 import Navbar from './components/Navbar';
 import Project1 from './pages/Project1';
-import Project2 from './pages/Project2';  
+import Project2 from './pages/Project2';
 import Project3 from './pages/Project3';
 
 function App() {
@@ -13,9 +13,16 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/project1" element={<Project1 />} />
-        <Route path="/project2" element={<Project2 />} /> 
-        <Route path="/project3" element={<Project3 />} /> 
+        
+        {/* New nicer URL paths */}
+        <Route path="/portfolio-1" element={<Project1 />} />
+        <Route path="/portfolio-2" element={<Project2 />} />
+        <Route path="/portfolio-3" element={<Project3 />} />
+
+        {/* Redirect old paths to new ones */}
+        <Route path="/project1" element={<Navigate to="/portfolio-1" replace />} />
+        <Route path="/project2" element={<Navigate to="/portfolio-2" replace />} />
+        <Route path="/project3" element={<Navigate to="/portfolio-3" replace />} />
       </Routes>
     </Router>
   );

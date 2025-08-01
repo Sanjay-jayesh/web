@@ -34,12 +34,8 @@ const Navbar = ({ toggle }) => {
     const about = document.getElementById('about');
     const contact = document.getElementById('resources');
 
-    // Highlight PORTFOLIO when on /project1, /project2, or /project3
-    if (
-      location.pathname === '/project1' ||
-      location.pathname === '/project2' ||
-      location.pathname === '/project3'
-    ) {
+    // ✅ NEW: Highlight PORTFOLIO when on any /portfolio-* route
+    if (location.pathname.startsWith('/portfolio-')) {
       setActiveSection('services');
       return;
     }
