@@ -29,7 +29,7 @@ const SpecialText = styled.p`
   margin-bottom: 10px;
 
   @media screen and (max-width: 768px) {
-      font-size: ${({ isAbout }) => (isAbout ? '28px' : '16px')};
+      font-size: ${({ isAbout }) => (isAbout ? '32px' : '16px')};
   }
 `;
 
