@@ -21,17 +21,21 @@ import {
 
 // New styled component for special line
 const SpecialText = styled.p`
-  font-family: 'Markazi Text', san-serif;
+  font-family: 'Markazi Text', sans-serif;
   font-size: 35px;
   font-weight: 800;
   color: #40E0D0;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: left;
 
   @media screen and (max-width: 768px) {
-      font-size: ${({ isAbout }) => (isAbout ? '32px' : '16px')};
+    font-size: 28px;
+    text-align: center;
   }
 `;
+
+
 
 const InfoSection = ({
   lightBg,

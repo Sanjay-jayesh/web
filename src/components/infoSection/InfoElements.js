@@ -61,7 +61,7 @@ export const TextWrapper = styled.div`
     padding-top: 0;
     padding-bottom: 60px;
 
-    @media screen and (max-widht:768px) {
+    @media screen and (max-width:768px) {
         padding-bottom: 30px
     }
 `;
