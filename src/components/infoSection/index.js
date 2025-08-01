@@ -27,6 +27,10 @@ const SpecialText = styled.p`
   color: #40E0D0;
   margin-top: 10px;
   margin-bottom: 10px;
+
+  @media screen and (max-width: 768px) {
+      font-size: ${({ isAbout }) => (isAbout ? '24px' : '16px')};
+  }
 `;
 
 const InfoSection = ({
