@@ -91,13 +91,17 @@ export const Heading = styled.h1`
 export const Subtitle = styled.p`
     max-width: 440px;
     margin-bottom: 20px;
-    font-size: ${({ isAbout }) => (isAbout ? '35px' : '18px')};;
+    font-size: ${({ isAbout }) => (isAbout ? '35px' : '18px')};
     line-height: ${({ isAbout }) => (isAbout ? '1' : '1.5')};
-
     color: ${({ darkText }) => (darkText ? '#010606' : '#fff')};
     overflow-wrap: break-word;
-    font-family: ${({ isAbout }) => (isAbout ? 'Markazi Text' : "san-serif")};
+    font-family: ${({ isAbout }) => (isAbout ? 'Markazi Text' : 'sans-serif')};
+
+    @media screen and (max-width: 768px) {
+        font-size: ${({ isAbout }) => (isAbout ? '24px' : '16px')};
+    }
 `;
+
 
 
 export const BtnWrap = styled.div`
