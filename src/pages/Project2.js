@@ -267,7 +267,7 @@ const StyledCloseButton = styled.button`
   right: 12px;
   font-size: 3.5rem;
   color: #fff;
-  background: rgba(0, 0, 0, 0.5);
+  background: none; 
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -276,10 +276,10 @@ const StyledCloseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
+  transition: transform 0.2s ease;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1); 
   }
 
   svg {
@@ -298,10 +298,11 @@ const ArrowButton = styled.span`
   transform: translateY(-50%);
   z-index: 1200;
   padding: 0 6px;
-  background: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
-  transition: background 0.3s ease;
+  transition: transform 0.2s ease;
+
   &:hover {
-    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1); 
   }
 `;
+

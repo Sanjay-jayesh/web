@@ -25,15 +25,18 @@ const SpecialText = styled.p`
   font-size: 35px;
   font-weight: 800;
   color: #40E0D0;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;   
+  margin-bottom: 10px; 
   text-align: left;
+  line-height: .8;    
 
   @media screen and (max-width: 768px) {
-    font-size: 28px;
-    text-align: center;
+    font-size: 29px;
+    text-align: left;
+    line-height: .8;
   }
 `;
+
 
 
 
