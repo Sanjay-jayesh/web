@@ -15,14 +15,14 @@ function App() {
         <Route path="/" element={<Home />} />
         
         {/* New nicer URL paths */}
-        <Route path="/portfolio-1" element={<Project1 />} />
-        <Route path="/portfolio-2" element={<Project2 />} />
-        <Route path="/portfolio-3" element={<Project3 />} />
+        <Route path="/Portfolio-Products" element={<Project1 />} />
+        <Route path="/Portfolio-Cars" element={<Project2 />} />
+        <Route path="/Portfolio-Food_and_Beverages" element={<Project3 />} />
 
         {/* Redirect old paths to new ones */}
-        <Route path="/project1" element={<Navigate to="/portfolio-1" replace />} />
-        <Route path="/project2" element={<Navigate to="/portfolio-2" replace />} />
-        <Route path="/project3" element={<Navigate to="/portfolio-3" replace />} />
+        <Route path="/project1" element={<Navigate to="/Portfolio-Products" replace />} />
+        <Route path="/project2" element={<Navigate to="/Portfolio-Cars" replace />} />
+        <Route path="/project3" element={<Navigate to="/Portfolio-Food_and_Beverages" replace />} />
       </Routes>
     </Router>
   );

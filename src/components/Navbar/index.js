@@ -34,8 +34,8 @@ const Navbar = ({ toggle }) => {
     const about = document.getElementById('about');
     const contact = document.getElementById('resources');
 
-    // ✅ NEW: Highlight PORTFOLIO when on any /portfolio-* route
-    if (location.pathname.startsWith('/portfolio-')) {
+
+    if (location.pathname.startsWith('/Portfolio-')) {
       setActiveSection('services');
       return;
     }
