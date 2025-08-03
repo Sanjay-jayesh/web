@@ -52,7 +52,7 @@ export const Column2 = styled.div`
 `;
 
 export const TopLine = styled.p`
-  color: #40E0D0;
+  color: #8F8D8D;
   font-size: 16px;
   line-height: 16px;
   font-weight: 700;
@@ -119,5 +119,5 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const AboutTextFontWrapper = styled.div`
-  font-family: Arial, sans-serif;
+  font-family: Manrope, san-serif;
 `;

@@ -58,7 +58,7 @@ export const FooterExternalLink = styled.a`
   font-size: 16px;
 
   &:hover {
-    color: #40E0D0;
+    color: #8F8D8D;
     transition: 0.3s ease-out;
   }
 `;

@@ -24,7 +24,7 @@ const SpecialText = styled.p`
   font-family: 'Markazi Text', sans-serif;
   font-size: 35px;
   font-weight: 800;
-  color: #40E0D0;
+  color: #8F8D8D;
   margin-top: 10px;   
   margin-bottom: 10px; 
   text-align: left;
@@ -81,11 +81,11 @@ const InfoSection = ({
 
                 {id === 'resources' && (
                   <Subtitle $darkText={darkText}>
-                    <a href={`mailto:${email}`} style={{ color: '#40E0D0', textDecoration: 'underline' }}>
+                    <a href={`mailto:${email}`} style={{ color: '#8F8D8D', textDecoration: 'underline' }}>
                       Email: {email}
                     </a>
                     <br />
-                    <a href={`tel:${phone}`} style={{ color: '#40E0D0', textDecoration: 'underline' }}>
+                    <a href={`tel:${phone}`} style={{ color: '#8F8D8D', textDecoration: 'underline' }}>
                       Phone: {phone}
                     </a>
                   </Subtitle>

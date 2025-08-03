@@ -18,7 +18,7 @@ export const Button = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    background: #40E0D0; /* turquoise bg on hover */
+    background: #8F8D8D; /* turquoise bg on hover */
     color: #000; /* black text on hover */
   }
 `;
