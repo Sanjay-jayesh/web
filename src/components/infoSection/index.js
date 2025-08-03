@@ -60,75 +60,64 @@ const InfoSection = ({
   phone
 }) => {
   return (
-    <InfoContainer lightBg={lightBg} id={id}>
-      <InfoWrapper isResources={id === 'resources'}>
-        <InfoRow imgStart={imgStart} isResources={id === 'resources'}>
+    <InfoContainer $lightBg={lightBg} id={id}>
+      <InfoWrapper $isResources={id === 'resources'}>
+        <InfoRow $imgStart={imgStart} $isResources={id === 'resources'}>
           <Column1>
-            {/* Heading first */}
             <HeadingWrapper>
               <TopLine>{topLine}</TopLine>
-              <Heading lightText={lightText}>{headline}</Heading>
+              <Heading $lightText={lightText}>{headline}</Heading>
             </HeadingWrapper>
 
-            {/* Image in the middle */}
             <ImgWrap className="mobile-only">
-              <Img src={img} alt={alt} />
+              {img && <Img src={img} alt={alt} />}
             </ImgWrap>
 
-            {/* Description and button below image */}
             <DescriptionWrapper>
               <AboutTextFontWrapper>
-                <Subtitle darkText={darkText} isAbout={id === 'about'}>
+                <Subtitle $darkText={darkText} $isAbout={id === 'about'}>
                   {description}
                 </Subtitle>
 
                 {id === 'resources' && (
-                  <>
-                    <Subtitle darkText={darkText}>
-                      <a href={`mailto:${email}`} style={{ color: '#40E0D0', textDecoration: 'underline' }}>
-                        Email: {email}
-                      </a>
-                      <br />
-                      <a href={`tel:${phone}`} style={{ color: '#40E0D0', textDecoration: 'underline' }}>
-                        Phone: {phone}
-                      </a>
-                    </Subtitle>
-                  </>
+                  <Subtitle $darkText={darkText}>
+                    <a href={`mailto:${email}`} style={{ color: '#40E0D0', textDecoration: 'underline' }}>
+                      Email: {email}
+                    </a>
+                    <br />
+                    <a href={`tel:${phone}`} style={{ color: '#40E0D0', textDecoration: 'underline' }}>
+                      Phone: {phone}
+                    </a>
+                  </Subtitle>
                 )}
               </AboutTextFontWrapper>
-
 
               {specialLine && <SpecialText>{specialLine}</SpecialText>}
 
               <BtnWrap>
                 {buttonLabel && (
                   <Button
-                    to='services'
+                    to="services"
                     smooth={true}
                     duration={1000}
                     spy={true}
                     exact="true"
                     offset={0}
-                    primary={primary ? 1 : 0}
-                    dark={dark ? 1 : 0}
-                    dark2={dark ? 1 : 0}
-                  >
-                    {buttonLabel}
+                    >
+                    My Portfolio
                   </Button>
                 )}
               </BtnWrap>
             </DescriptionWrapper>
           </Column1>
 
-        {img && (
-          <Column2 className="desktop-only">
-          {img &&(
-            <ImgWrap>
-              <Img src={img} alt={alt} />
-            </ImgWrap>
+          {img && (
+            <Column2 className="desktop-only">
+              <ImgWrap>
+                <Img src={img} alt={alt} />
+              </ImgWrap>
+            </Column2>
           )}
-          </Column2>
-        )}
         </InfoRow>
       </InfoWrapper>
     </InfoContainer>

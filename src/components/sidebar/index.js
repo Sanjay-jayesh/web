@@ -1,27 +1,45 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   SidebarContainer,
   Icon,
   CloseIcon,
   SidebarWrapper,
   SidebarMenu,
-  SidebarLink,
+  SidebarLinkStyled,
   SideBtnWrap,
   SidebarRoute
 } from './SidebarElements';
 
 const Sidebar = ({ isOpen, toggle }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigateToSection = (sectionId) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100); // slight delay to wait for homepage to render
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    toggle(); // close sidebar
+  };
+
   return (
-    <SidebarContainer isOpen={isOpen} onClick={toggle}>
+    <SidebarContainer $isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>
         <CloseIcon />
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          <SidebarLink to="home" smooth={true} duration={1000} spy={true} exact="true" offset={-80} onClick={toggle}>HOME</SidebarLink>
-          <SidebarLink to="about" smooth={true} duration={1000} spy={true} exact="true" offset={-40} onClick={toggle}>ABOUT ME</SidebarLink>
-          <SidebarLink to="services" smooth={true} duration={1000} spy={true} exact="true" offset={80} onClick={toggle}>PORTFOLIO</SidebarLink>
-          <SidebarLink to="resources" smooth={true} duration={1000} spy={true} exact="true" offset={-80} onClick={toggle}>CONTACT</SidebarLink>
+          <SidebarLinkStyled onClick={() => handleNavigateToSection('home')}>HOME</SidebarLinkStyled>
+          <SidebarLinkStyled onClick={() => handleNavigateToSection('about')}>ABOUT ME</SidebarLinkStyled>
+          <SidebarLinkStyled onClick={() => handleNavigateToSection('services')}>PORTFOLIO</SidebarLinkStyled>
+          <SidebarLinkStyled onClick={() => handleNavigateToSection('resources')}>CONTACT</SidebarLinkStyled>
         </SidebarMenu>
       </SidebarWrapper>
     </SidebarContainer>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import Navbar from '../components/Navbar';
 import mediaItems from '../data/mediaData';
 import { FiX } from 'react-icons/fi';
 
@@ -61,7 +60,6 @@ const Project1 = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [modalOpen]);
 
-  // Handle video visibility with IntersectionObserver
   useEffect(() => {
     if (!modalOpen) return;
 
@@ -96,53 +94,56 @@ const Project1 = () => {
   }, [visibleIndex]);
 
   return (
-    <>
-      {!modalOpen && <Navbar />}
-      <PageContainer>
-        <GalleryGrid>
-          {mediaItems.map((item, index) => (
-            <MediaItem key={index} onClick={() => openModal(index)}>
-              {item.type === 'image' ? (
-                <Thumbnail src={item.src} alt={`media-${index}`} />
-              ) : (
-                <VideoWrapper>
-                  <ThumbnailVideo src={item.src} muted loop playsInline />
-                  <PlayOverlay>▶</PlayOverlay>
-                </VideoWrapper>
+    <PageContainer>
+      <GalleryGrid>
+        {mediaItems.map((item, index) => (
+          <MediaItem key={index} onClick={() => openModal(index)}>
+            {item.type === 'image' ? (
+              <Thumbnail src={item.src} alt={`media-${index}`} />
+            ) : (
+              <VideoWrapper>
+                <ThumbnailVideo src={item.src} muted loop playsInline />
+                <PlayOverlay>▶</PlayOverlay>
+              </VideoWrapper>
+            )}
+          </MediaItem>
+        ))}
+      </GalleryGrid>
+
+      {modalOpen && (
+        <Modal onClick={closeModal}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <StyledCloseButton onClick={closeModal}>
+              <FiX />
+            </StyledCloseButton>
+            <ArrowButton left onClick={() => scrollBy(-window.innerWidth)}>
+              &#10094;
+            </ArrowButton>
+            <ArrowButton onClick={() => scrollBy(window.innerWidth)}>
+              &#10095;
+            </ArrowButton>
+
+            <ScrollWrapper ref={scrollRef}>
+              {mediaItems.map((item, index) =>
+                item.type === 'image' ? (
+                  <ScrollMedia key={index} as="img" src={item.src} alt={`media-${index}`} />
+                ) : (
+                  <ScrollMedia
+                    key={index}
+                    as="video"
+                    src={item.src}
+                    controls
+                    loop
+                    data-index={index}
+                    ref={(el) => (videoRefs.current[index] = el)}
+                  />
+                )
               )}
-            </MediaItem>
-          ))}
-        </GalleryGrid>
-
-        {modalOpen && (
-          <Modal onClick={closeModal}>
-            <ModalContent onClick={(e) => e.stopPropagation()}>
-              <StyledCloseButton onClick={closeModal}><FiX /></StyledCloseButton>
-              <ArrowButton left onClick={() => scrollBy(-window.innerWidth)}>&#10094;</ArrowButton>
-              <ArrowButton onClick={() => scrollBy(window.innerWidth)}>&#10095;</ArrowButton>
-
-              <ScrollWrapper ref={scrollRef}>
-                {mediaItems.map((item, index) =>
-                  item.type === 'image' ? (
-                    <ScrollMedia key={index} as="img" src={item.src} alt={`media-${index}`} />
-                  ) : (
-                    <ScrollMedia
-                      key={index}
-                      as="video"
-                      src={item.src}
-                      controls
-                      loop
-                      data-index={index}
-                      ref={(el) => (videoRefs.current[index] = el)}
-                    />
-                  )
-                )}
-              </ScrollWrapper>
-            </ModalContent>
-          </Modal>
-        )}
-      </PageContainer>
-    </>
+            </ScrollWrapper>
+          </ModalContent>
+        </Modal>
+      )}
+    </PageContainer>
   );
 };
 

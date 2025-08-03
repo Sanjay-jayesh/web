@@ -34,7 +34,6 @@ const Navbar = ({ toggle }) => {
     const about = document.getElementById('about');
     const contact = document.getElementById('resources');
 
-
     if (location.pathname.startsWith('/Portfolio-')) {
       setActiveSection('services');
       return;
@@ -59,8 +58,7 @@ const Navbar = ({ toggle }) => {
   useEffect(() => {
     window.addEventListener('scroll', changeNav);
     window.addEventListener('scroll', updateActiveSection);
-
-    updateActiveSection(); // Initial call
+    updateActiveSection(); // on mount
 
     return () => {
       window.removeEventListener('scroll', changeNav);
@@ -89,14 +87,17 @@ const Navbar = ({ toggle }) => {
 
   return (
     <IconContext.Provider value={{ color: '#fff' }}>
-      <Nav scrollNav={scrollNav}>
+      <Nav $scrollNav={scrollNav}>
         <NavbarContainer>
           <NavLogo to="/" onClick={toggleHome}>
             Rafah Fathima
           </NavLogo>
+
+          {/* ☑️ THIS IS CRUCIAL */}
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
+
           <NavMenu>
             <NavItem>
               <NavLinks
@@ -126,6 +127,7 @@ const Navbar = ({ toggle }) => {
               </NavLinks>
             </NavItem>
           </NavMenu>
+
           <Navbtn />
         </NavbarContainer>
       </Nav>

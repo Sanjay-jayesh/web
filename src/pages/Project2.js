@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import Navbar from '../components/Navbar';
+import Sidebar from '../components/sidebar';  // Make sure you have this!
 import mediaItems from '../data/mediaData2'; // Your media data file for Project2
 import { FiX } from 'react-icons/fi';
 
@@ -13,8 +14,11 @@ const Project2 = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleIndex, setVisibleIndex] = useState(null);
+  const [isOpen, setIsOpen] = useState(false); // Sidebar open state
   const scrollRef = useRef();
   const videoRefs = useRef([]);
+
+  const toggle = () => setIsOpen(!isOpen);
 
   const openModal = (index) => {
     setCurrentIndex(index);
@@ -96,7 +100,12 @@ const Project2 = () => {
 
   return (
     <>
-      {!modalOpen && <Navbar />}
+      {!modalOpen && (
+        <>
+          <Navbar isOpen={isOpen} toggle={toggle} />
+          <Sidebar isOpen={isOpen} toggle={toggle} />
+        </>
+      )}
       <PageContainer>
         <GalleryGrid>
           {mediaItems.map((item, index) => (
@@ -119,13 +128,22 @@ const Project2 = () => {
               <StyledCloseButton onClick={closeModal}>
                 <FiX />
               </StyledCloseButton>
-              <ArrowButton left onClick={() => scrollBy(-window.innerWidth)}>&#10094;</ArrowButton>
-              <ArrowButton onClick={() => scrollBy(window.innerWidth)}>&#10095;</ArrowButton>
+              <ArrowButton left onClick={() => scrollBy(-window.innerWidth)}>
+                &#10094;
+              </ArrowButton>
+              <ArrowButton onClick={() => scrollBy(window.innerWidth)}>
+                &#10095;
+              </ArrowButton>
 
               <ScrollWrapper ref={scrollRef}>
                 {mediaItems.map((item, index) =>
                   item.type === 'image' ? (
-                    <ScrollMedia key={index} as="img" src={item.src} alt={`media-${index}`} />
+                    <ScrollMedia
+                      key={index}
+                      as="img"
+                      src={item.src}
+                      alt={`media-${index}`}
+                    />
                   ) : (
                     <ScrollMedia
                       key={index}
@@ -267,7 +285,7 @@ const StyledCloseButton = styled.button`
   right: 12px;
   font-size: 3.5rem;
   color: #fff;
-  background: none; 
+  background: none;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -279,7 +297,7 @@ const StyledCloseButton = styled.button`
   transition: transform 0.2s ease;
 
   &:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
   }
 
   svg {
@@ -302,7 +320,6 @@ const ArrowButton = styled.span`
   transition: transform 0.2s ease;
 
   &:hover {
-    transform: translateY(-50%) scale(1.1); 
+    transform: translateY(-50%) scale(1.1);
   }
 `;
-
