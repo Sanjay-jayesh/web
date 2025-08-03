@@ -14,7 +14,7 @@ const Project3 = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleIndex, setVisibleIndex] = useState(null);
-  const [isOpen, setIsOpen] = useState(false); // Sidebar open state
+  const [isOpen, setIsOpen] = useState(false);
   const scrollRef = useRef();
   const videoRefs = useRef([]);
 
@@ -65,6 +65,7 @@ const Project3 = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [modalOpen]);
 
+  // IntersectionObserver for images and videos
   useEffect(() => {
     if (!modalOpen) return;
 
@@ -72,7 +73,7 @@ const Project3 = () => {
       (entries) => {
         entries.forEach((entry) => {
           const index = Number(entry.target.dataset.index);
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !isNaN(index)) {
             setVisibleIndex(index);
           }
         });
@@ -80,20 +81,24 @@ const Project3 = () => {
       { threshold: 0.6 }
     );
 
-    videoRefs.current.forEach((el) => el && observer.observe(el));
+    const scrollMedia = scrollRef.current?.querySelectorAll('[data-index]');
+    scrollMedia?.forEach((el) => observer.observe(el));
 
     return () => {
-      videoRefs.current.forEach((el) => el && observer.unobserve(el));
+      scrollMedia?.forEach((el) => observer.unobserve(el));
     };
   }, [modalOpen]);
 
+  // Play/pause and reset videos on visibleIndex change
   useEffect(() => {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
       if (i === visibleIndex) {
+        video.currentTime = 0;
         video.play().catch(() => {});
       } else {
         video.pause();
+        video.currentTime = 0;
       }
     });
   }, [visibleIndex]);
@@ -143,6 +148,7 @@ const Project3 = () => {
                       as="img"
                       src={item.src}
                       alt={`media-${index}`}
+                      data-index={index}
                     />
                   ) : (
                     <ScrollMedia
@@ -167,7 +173,7 @@ const Project3 = () => {
 
 export default Project3;
 
-// Styled Components
+// Styled Components (unchanged from your original)
 
 const PageContainer = styled.div`
   background: #000;

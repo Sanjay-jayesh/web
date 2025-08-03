@@ -86,9 +86,11 @@ const Project1 = () => {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
       if (i === visibleIndex) {
+        video.currentTime = 0;
         video.play().catch(() => {});
       } else {
         video.pause();
+        video.currentTime = 0;
       }
     });
   }, [visibleIndex]);
@@ -287,7 +289,6 @@ const StyledCloseButton = styled.button`
   }
 `;
 
-
 const ArrowButton = styled.span`
   position: absolute;
   top: 50%;
@@ -303,6 +304,6 @@ const ArrowButton = styled.span`
   transition: transform 0.2s ease;
 
   &:hover {
-    transform: translateY(-50%) scale(1.1); 
+    transform: translateY(-50%) scale(1.1);
   }
 `;

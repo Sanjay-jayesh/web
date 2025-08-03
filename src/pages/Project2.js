@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import Navbar from '../components/Navbar';
-import Sidebar from '../components/sidebar';  // Make sure you have this!
-import mediaItems from '../data/mediaData2'; // Your media data file for Project2
+import Sidebar from '../components/sidebar';
+import mediaItems from '../data/mediaData2';
 import { FiX } from 'react-icons/fi';
 
 const fadeIn = keyframes`
@@ -14,7 +14,7 @@ const Project2 = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleIndex, setVisibleIndex] = useState(null);
-  const [isOpen, setIsOpen] = useState(false); // Sidebar open state
+  const [isOpen, setIsOpen] = useState(false);
   const scrollRef = useRef();
   const videoRefs = useRef([]);
 
@@ -24,9 +24,7 @@ const Project2 = () => {
     setCurrentIndex(index);
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
-    setTimeout(() => {
-      scrollToIndex(index);
-    }, 100);
+    setTimeout(() => scrollToIndex(index), 100);
   };
 
   const closeModal = () => {
@@ -59,12 +57,11 @@ const Project2 = () => {
       if (e.key === 'ArrowRight') scrollBy(window.innerWidth);
       if (e.key === 'ArrowLeft') scrollBy(-window.innerWidth);
     };
-    if (modalOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
+    if (modalOpen) window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [modalOpen]);
 
+  // 👇 IntersectionObserver for both images and videos
   useEffect(() => {
     if (!modalOpen) return;
 
@@ -72,7 +69,7 @@ const Project2 = () => {
       (entries) => {
         entries.forEach((entry) => {
           const index = Number(entry.target.dataset.index);
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !isNaN(index)) {
             setVisibleIndex(index);
           }
         });
@@ -80,20 +77,24 @@ const Project2 = () => {
       { threshold: 0.6 }
     );
 
-    videoRefs.current.forEach((el) => el && observer.observe(el));
+    const scrollMedia = scrollRef.current?.querySelectorAll('[data-index]');
+    scrollMedia?.forEach((el) => observer.observe(el));
 
     return () => {
-      videoRefs.current.forEach((el) => el && observer.unobserve(el));
+      scrollMedia?.forEach((el) => observer.unobserve(el));
     };
   }, [modalOpen]);
 
+  // 👇 Reset + play/pause logic
   useEffect(() => {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
       if (i === visibleIndex) {
+        video.currentTime = 0;
         video.play().catch(() => {});
       } else {
         video.pause();
+        video.currentTime = 0;
       }
     });
   }, [visibleIndex]);
@@ -106,6 +107,7 @@ const Project2 = () => {
           <Sidebar isOpen={isOpen} toggle={toggle} />
         </>
       )}
+
       <PageContainer>
         <GalleryGrid>
           {mediaItems.map((item, index) => (
@@ -143,6 +145,7 @@ const Project2 = () => {
                       as="img"
                       src={item.src}
                       alt={`media-${index}`}
+                      data-index={index} // ✅ Important!
                     />
                   ) : (
                     <ScrollMedia
@@ -246,7 +249,6 @@ const ModalContent = styled.div`
   width: 100vw;
   background: #000;
   border-radius: 12px;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
