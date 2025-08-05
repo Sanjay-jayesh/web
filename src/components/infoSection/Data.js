@@ -9,7 +9,7 @@ export const homeObjOne = {
     topLine: '',
     headline: 'ABOUT ME',
     description: `Hi! I’m Rafah Fathima a 17 year old freelance content creator and social media manager with a passion for transforming brands into digital experiences. I specialize in creating high-quality reels, professional photoshoots, and compelling content that connects with audiences and drives engagement. I’m flexible, easy to work with, and I’m always open to new ideas. `,
-    specialLine: 'YOUR BRAND DESERVES TO BE SEEN AT ITS BEST!',
+    specialLine: 'Your Brand Deserves To Be Seen At Its Best!',
     buttonLabel: 'My Portfolio',
     imgStart: false,
     img: rafah,

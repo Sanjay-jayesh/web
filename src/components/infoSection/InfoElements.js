@@ -75,15 +75,15 @@ export const Heading = styled.h1`
 
 export const Subtitle = styled.p`
   max-width: 440px;
-  margin-bottom: 20px;
-  font-size: ${({ $isAbout }) => ($isAbout ? '35px' : '18px')};
-  line-height: ${({ $isAbout }) => ($isAbout ? '1' : '1.5')};
+  margin-bottom: 10px;
+  font-size: ${({ $isAbout }) => ($isAbout ? '23px' : '18px')}; 
+  line-height: ${({ $isAbout }) => ($isAbout ? '1.3' : '1.5')};
   color: ${({ $darkText }) => ($darkText ? '#010606' : '#fff')};
   overflow-wrap: break-word;
-  font-family: ${({ $isAbout }) => ($isAbout ? 'Markazi Text' : 'sans-serif')};
+  font-family: ${({ $isAbout }) => ($isAbout ? "'Manrope', sans-serif" : 'sans-serif')};
 
   @media screen and (max-width: 768px) {
-    font-size: ${({ $isAbout }) => ($isAbout ? '24px' : '16px')};
+    font-size: ${({ $isAbout }) => ($isAbout ? '20px' : '16px')}; 
   }
 `;
 
@@ -95,7 +95,12 @@ export const BtnWrap = styled.div`
 export const ImgWrap = styled.div`
   max-width: 555px;
   height: 100%;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 10px;  /* adds space below the image on mobile */
+  }
 `;
+
 
 export const Img = styled.img`
   width: 100%;
@@ -119,5 +124,10 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const AboutTextFontWrapper = styled.div`
-  font-family: Manrope, san-serif;
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.4;
 `;

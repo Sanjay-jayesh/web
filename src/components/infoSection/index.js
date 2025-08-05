@@ -21,17 +21,19 @@ import {
 
 // New styled component for special line
 const SpecialText = styled.p`
-  font-family: 'Markazi Text', sans-serif;
-  font-size: 35px;
-  font-weight: 800;
+  font-family: 'Manrope', sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
   color: #8F8D8D;
-  margin-top: 10px;   
+  margin-top: 10px;  
+  letter-spacing: normal; 
   margin-bottom: 10px; 
   text-align: left;
   line-height: .8;    
 
   @media screen and (max-width: 768px) {
-    font-size: 29px;
+    font-size: 28px;
     text-align: left;
     line-height: .8;
   }
