@@ -21,23 +21,21 @@ import {
 
 // New styled component for special line
 const SpecialText = styled.p`
-  font-family: 'Manrope', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 30px;
-  font-style: normal;
   font-weight: 600;
   color: #8F8D8D;
-  margin-top: 10px;  
-  letter-spacing: normal; 
-  margin-bottom: 10px; 
+  margin-top: 10px;
+  margin-bottom: 10px;
   text-align: left;
-  line-height: .8;    
+  line-height: 1.2;
 
   @media screen and (max-width: 768px) {
-    font-size: 28px;
-    text-align: left;
-    line-height: .8;
+    font-size: 24px;
   }
 `;
+
+
 
 
 

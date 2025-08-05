@@ -75,17 +75,19 @@ export const Heading = styled.h1`
 
 export const Subtitle = styled.p`
   max-width: 440px;
-  margin-bottom: 10px;
-  font-size: ${({ $isAbout }) => ($isAbout ? '23px' : '18px')}; 
+  margin-bottom: 20px;
+  font-size: ${({ $isAbout }) => ($isAbout ? '26px' : '18px')};
   line-height: ${({ $isAbout }) => ($isAbout ? '1.3' : '1.5')};
   color: ${({ $darkText }) => ($darkText ? '#010606' : '#fff')};
   overflow-wrap: break-word;
-  font-family: ${({ $isAbout }) => ($isAbout ? "'Manrope', sans-serif" : 'sans-serif')};
+  font-family: Helvetica, Arial, sans-serif;
 
   @media screen and (max-width: 768px) {
-    font-size: ${({ $isAbout }) => ($isAbout ? '20px' : '16px')}; 
+    font-size: ${({ $isAbout }) => ($isAbout ? '17px' : '16px')};
   }
 `;
+
+
 
 export const BtnWrap = styled.div`
   display: flex;
