@@ -83,7 +83,7 @@ export const Subtitle = styled.p`
   font-family: Helvetica, Arial, sans-serif;
 
   @media screen and (max-width: 768px) {
-    font-size: ${({ $isAbout }) => ($isAbout ? '17px' : '16px')};
+    font-size: ${({ $isAbout }) => ($isAbout ? '19px' : '16px')};
   }
 `;
 
