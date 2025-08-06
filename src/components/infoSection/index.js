@@ -31,7 +31,7 @@ const SpecialText = styled.p`
   line-height: 1.2;
 
   @media screen and (max-width: 768px) {
-    font-size: 22px;
+    font-size: 20px;
   }
 `;
 
