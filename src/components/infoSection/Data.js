@@ -1,5 +1,5 @@
 import svg1 from '../../images/svg-1.svg';
-import rafah from '../../images/rafah11.jpg';
+import rafah from '../../images/rafah1.jpg';
 
 export const homeObjOne = {
     id: 'about',
