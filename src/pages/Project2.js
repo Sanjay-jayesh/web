@@ -305,6 +305,11 @@ const StyledCloseButton = styled.button`
   svg {
     stroke-width: 1.2;
   }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    padding: 4px;
+  }
 `;
 
 const ArrowButton = styled.span`
@@ -323,5 +328,10 @@ const ArrowButton = styled.span`
 
   &:hover {
     transform: translateY(-50%) scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    padding: 4px;
   }
 `;
