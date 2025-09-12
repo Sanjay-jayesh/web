@@ -81,11 +81,11 @@ const InfoSection = ({
 
                 {id === 'resources' && (
                   <Subtitle $darkText={darkText}>
-                    <a href={`mailto:${email}`} style={{ color: '#8F8D8D', textDecoration: 'underline' }}>
+                    <a href={`mailto:${email}`} style={{ color: '#C9C9C9', textDecoration: 'underline' }}>
                       Email: {email}
                     </a>
                     <br />
-                    <a href={`tel:${phone}`} style={{ color: '#8F8D8D', textDecoration: 'underline' }}>
+                    <a href={`tel:${phone}`} style={{ color: '#C9C9C9', textDecoration: 'underline' }}>
                       Phone: {phone}
                     </a>
                   </Subtitle>
