@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    // Get the path the user was trying to access (e.g., /Portfolio-Cars)
+    var path = window.location.pathname;
+
+    // Build the URL to redirect to: 
+    // root (/) + path + save the original path as a query parameter
+    var newUrl = window.location.protocol + "//" + window.location.host +
+                 window.location.pathname.split('/')[0] + '/?p=' + path;
+
+    // If your app is not hosted at the root (e.g., a Project Page like yours)
+    // you need to account for the repository name (Portfolio-Cars)
+    // **Correction for Project Pages (like yours):**
+    
+    // This is the correct script for a GitHub Project Page:
+    var segments = window.location.pathname.split('/');
+    // Assuming the repo name is the first segment after the domain, e.g., /Portfolio-Cars/
+    var repoName = segments[1];
+    var pathAfterRepo = segments.slice(2).join('/');
+    
+    // Construct the correct redirect URL:
+    // https://rafahfathima.com/Portfolio-Cars/index.html?p=the-path
+    var correctUrl = '/' + repoName + '/?p=' + pathAfterRepo;
+
+    // Use replace to immediately redirect the browser to the new URL
+    window.history.replaceState(null, null, correctUrl);
+    window.location.replace(window.location.protocol + "//" + window.location.host + correctUrl);
+
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
