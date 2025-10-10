@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script>
-    // Get the path the user was trying to access (e.g., /Portfolio-Cars)
-    var path = window.location.pathname;
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+    <script type="text/javascript">
+        // Single-Page App (SPA) Router Fallback for GitHub Pages
+        (function() {
+            var redirect = sessionStorage.getItem('redirect');
+            
+            // 1. Check if we've already redirected (prevents infinite loop)
+            if (redirect && redirect !== window.location.pathname) {
+                sessionStorage.removeItem('redirect');
+                window.location.replace(redirect);
+                return;
+            }
 
-    // Build the URL to redirect to: 
-    // root (/) + path + save the original path as a query parameter
-    var newUrl = window.location.protocol + "//" + window.location.host +
-                 window.location.pathname.split('/')[0] + '/?p=' + path;
+            // 2. Set the requested path in sessionStorage
+            sessionStorage.setItem('redirect', window.location.pathname);
+            
+            // 3. Get the path to your repository root (e.g., /Portfolio-Cars)
+            var pathSegmentsToKeep = 1; // You need the root (/) plus your repo name segment.
+            
+            // Split the full path (e.g., /Portfolio-Cars/test-route)
+            var segments = window.location.pathname.split('/');
+            
+            // Re-join the base path (e.g., /Portfolio-Cars/)
+            var newPath = segments.slice(0, pathSegmentsToKeep + 1).join('/');
 
-    // If your app is not hosted at the root (e.g., a Project Page like yours)
-    // you need to account for the repository name (Portfolio-Cars)
-    // **Correction for Project Pages (like yours):**
-    
-    // This is the correct script for a GitHub Project Page:
-    var segments = window.location.pathname.split('/');
-    // Assuming the repo name is the first segment after the domain, e.g., /Portfolio-Cars/
-    var repoName = segments[1];
-    var pathAfterRepo = segments.slice(2).join('/');
-    
-    // Construct the correct redirect URL:
-    // https://rafahfathima.com/Portfolio-Cars/index.html?p=the-path
-    var correctUrl = '/' + repoName + '/?p=' + pathAfterRepo;
-
-    // Use replace to immediately redirect the browser to the new URL
-    window.history.replaceState(null, null, correctUrl);
-    window.location.replace(window.location.protocol + "//" + window.location.host + correctUrl);
-
-  </script>
+            // 4. Redirect to the index page, which will now use the path stored in sessionStorage
+            window.location.replace(newPath);
+        })();
+    </script>
 </head>
 <body>
-  <p>Redirecting...</p>
+    <p>If you are not redirected automatically, follow <a href="/">this link</a>.</p>
 </body>
 </html>
