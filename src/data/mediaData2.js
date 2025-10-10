@@ -50,7 +50,6 @@ const mediaItems = [
   { type: 'image', src: require('../images/car50.jpg') },
   { type: 'image', src: require('../images/car51.jpg') },
   { type: 'video', src: require('../videos/vid4.mp4') },
-  { type: 'video', src: require('../videos/vid12.mov') },
   { type: 'video', src: require('../videos/vid13.mov') }
 ];
 
