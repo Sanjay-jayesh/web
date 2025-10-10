@@ -178,25 +178,39 @@ const PageContainer = styled.div`
   padding-top: 100px;
 `;
 
+// 🔑 Masonry Fix: Using CSS Columns for a 'freestyle' gallery layout
 const GalleryGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  column-count: 3; /* Default: 3 columns */
+  column-gap: 16px; 
   padding: 2rem;
+
+  @media (max-width: 1024px) {
+    column-count: 2;
+  }
+  @media (max-width: 600px) {
+    column-count: 1;
+  }
 `;
 
 const MediaItem = styled.div`
   cursor: pointer;
   overflow: hidden;
   background: #111;
+  /* Required for masonry layout */
+  margin-bottom: 16px; 
+  break-inside: avoid; 
   position: relative;
+  display: inline-block; 
+  width: 100%;
 `;
 
 const Thumbnail = styled.img`
   width: 100%;
-  height: auto;
-  display: block;
+  /* Removed fixed height and object-fit to allow natural image aspect ratio 
+     to drive the tile height and eliminate gaps. */
+  display: block; 
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.03);
   }
@@ -204,13 +218,15 @@ const Thumbnail = styled.img`
 
 const ThumbnailVideo = styled.video`
   width: 100%;
-  height: auto;
+  /* Removed fixed height and object-fit for masonry compatibility. */
   display: block;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.03);
   }
 `;
+
 
 const VideoWrapper = styled.div`
   position: relative;

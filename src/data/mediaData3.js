@@ -16,6 +16,8 @@ import food16 from '../images/food1.jpg';
 import food17 from '../images/food5.jpg';
 import food18 from '../images/food7.jpg';
 import food19 from '../images/food4.jpg';
+import food20 from '../images/food20.jpg';
+import food21 from '../images/food21.jpg';
 
 import vid1 from '../videos/vid1.mp4';
 import vid10 from '../videos/vid10.mp4';
@@ -35,13 +37,14 @@ const mediaItems = [
   { type: 'image', src: food12 },
   { type: 'image', src: food13 },
   { type: 'image', src: food14 },
+  { type: 'image', src: food20 },
   { type: 'video', src: vid1 },
   { type: 'video', src: vid10 },
   { type: 'image', src: food16 },
   { type: 'image', src: food17 },
   { type: 'image', src: food18 },
-  { type: 'image', src: food19 }
-
+  { type: 'image', src: food19 },
+  { type: 'image', src: food21 },
 ];
 
 export default mediaItems;

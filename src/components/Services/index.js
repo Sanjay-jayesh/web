@@ -26,7 +26,7 @@ const Services = () => {
 
         <ServicesCard to="/project2">
           <ServicesIcon src={Icon2} />
-          <ServicesH2>Cars</ServicesH2>
+          <ServicesH2>Automotive</ServicesH2>
           <ServicesP></ServicesP>
         </ServicesCard>
 

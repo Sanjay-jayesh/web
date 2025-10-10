@@ -13,6 +13,7 @@ import img11 from '../images/img11.jpg';
 import img12 from '../images/img12.jpg';
 import img13 from '../images/img13.jpg';
 import img14 from '../images/img14.jpg';
+import img15 from '../images/img15.jpg';
 
 import vid2 from '../videos/vid2.mov';
 import vid3 from '../videos/vid3.mp4';
@@ -39,6 +40,7 @@ const mediaItems = [
   { type: 'image', src: img12 },
   { type: 'image', src: img13 },
   { type: 'image', src: img14 },
+  { type: 'image', src: img15 },
 
   { type: 'video', src: vid2 },
   { type: 'video', src: vid3 },

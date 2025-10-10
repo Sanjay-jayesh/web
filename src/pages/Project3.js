@@ -173,7 +173,7 @@ const Project3 = () => {
 
 export default Project3;
 
-// Styled Components (unchanged from your original)
+// Styled Components
 
 const PageContainer = styled.div`
   background: #000;
@@ -181,11 +181,18 @@ const PageContainer = styled.div`
   padding-top: 100px;
 `;
 
+// 🔑 FIX: Switched to CSS Columns for Masonry (freestyle) Layout
 const GalleryGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  column-count: 3; /* Default: 3 columns */
+  column-gap: 16px; 
   padding: 2rem;
+
+  @media (max-width: 1024px) {
+    column-count: 2;
+  }
+  @media (max-width: 600px) {
+    column-count: 1;
+  }
 `;
 
 const MediaItem = styled.div`
@@ -193,27 +200,51 @@ const MediaItem = styled.div`
   overflow: hidden;
   background: #111;
   position: relative;
+  /* Required for masonry layout */
+  margin-bottom: 16px; 
+  break-inside: avoid; 
+  display: inline-block; 
+  width: 100%;
 `;
 
 const Thumbnail = styled.img`
+  /* Updated for Masonry: width 100%, height auto */
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  /* Changed object-fit from 'contain' (which leaves empty space inside the box) 
+     to removing it or setting it to 'cover' if you want a uniform look, but for 
+     masonry, removing it allows the natural aspect ratio to work best. 
+     I've removed max-width/height and object-fit: contain to ensure full width 
+     and correct tile height for masonry. */
+  vertical-align: middle;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.03);
   }
 `;
 
 const ThumbnailVideo = styled.video`
+  /* Updated for Masonry: width 100%, height auto */
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  /* See notes on Thumbnail above */
+  vertical-align: middle;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.03);
   }
 `;
+
 
 const VideoWrapper = styled.div`
   position: relative;

@@ -174,24 +174,41 @@ const MediaItem = styled.div`
 `;
 
 const Thumbnail = styled.img`
-  width: 100%;
-  height: auto;
   display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  object-fit: contain;
+  vertical-align: middle;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.03);
   }
 `;
 
 const ThumbnailVideo = styled.video`
-  width: 100%;
-  height: auto;
   display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  object-fit: contain;
+  vertical-align: middle;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.03);
   }
 `;
+
 
 const VideoWrapper = styled.div`
   position: relative;
