@@ -75,10 +75,11 @@ const Project1 = () => {
       { threshold: 0.6 }
     );
 
-    videoRefs.current.forEach((el) => el && observer.observe(el));
+    const scrollMedia = scrollRef.current?.querySelectorAll('[data-index]');
+    scrollMedia?.forEach((el) => observer.observe(el));
 
     return () => {
-      videoRefs.current.forEach((el) => el && observer.unobserve(el));
+      scrollMedia?.forEach((el) => observer.unobserve(el));
     };
   }, [modalOpen]);
 
@@ -128,7 +129,13 @@ const Project1 = () => {
             <ScrollWrapper ref={scrollRef}>
               {mediaItems.map((item, index) =>
                 item.type === 'image' ? (
-                  <ScrollMedia key={index} as="img" src={item.src} alt={`media-${index}`} />
+                  <ScrollMedia 
+                    key={index} 
+                    as="img" 
+                    src={item.src} 
+                    alt={`media-${index}`} 
+                    data-index={index} // Added data-index for IntersectionObserver
+                  />
                 ) : (
                   <ScrollMedia
                     key={index}
@@ -159,11 +166,18 @@ const PageContainer = styled.div`
   padding-top: 100px;
 `;
 
+// 🔑 FIX: Switched to CSS Columns for Masonry (freestyle) Layout
 const GalleryGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  column-count: 3; /* Default: 3 columns */
+  column-gap: 16px; 
   padding: 2rem;
+
+  @media (max-width: 1024px) {
+    column-count: 2;
+  }
+  @media (max-width: 600px) {
+    column-count: 1;
+  }
 `;
 
 const MediaItem = styled.div`
@@ -171,18 +185,19 @@ const MediaItem = styled.div`
   overflow: hidden;
   background: #111;
   position: relative;
+  /* Required for masonry layout */
+  margin-bottom: 16px; 
+  break-inside: avoid; 
+  display: inline-block; 
+  width: 100%;
 `;
 
 const Thumbnail = styled.img`
+  /* Cleaned up styling for masonry */
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-  object-fit: contain;
+  width: 100%; /* Ensure it fills the column width */
+  height: auto; /* Allow natural aspect ratio to determine height */
+  /* Removed redundant max-width/max-height, margin, padding, border, object-fit */
   vertical-align: middle;
   transition: transform 0.3s ease;
 
@@ -192,15 +207,11 @@ const Thumbnail = styled.img`
 `;
 
 const ThumbnailVideo = styled.video`
+  /* Cleaned up styling for masonry */
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-  object-fit: contain;
+  width: 100%; /* Ensure it fills the column width */
+  height: auto; /* Allow natural aspect ratio to determine height */
+  /* Removed redundant max-width/max-height, margin, padding, border, object-fit */
   vertical-align: middle;
   transition: transform 0.3s ease;
 
@@ -334,4 +345,3 @@ const ArrowButton = styled.span`
     ${({ left }) => (left ? 'left: 6px;' : 'right: 6px;')}
   }
 `;
-

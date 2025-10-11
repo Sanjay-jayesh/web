@@ -1,10 +1,10 @@
 const mediaItems = [
-  { type: 'image', src: require('../images/car1.jpg') },
-  { type: 'image', src: require('../images/car2.jpg') },
+  { type: 'image', src: require('../images/car45.jpg') },
+  { type: 'image', src: require('../images/car35.jpg') },
   { type: 'image', src: require('../images/car21.jpg') },
   { type: 'image', src: require('../images/car4.jpg') },
   { type: 'image', src: require('../images/car5.jpg') },
-  { type: 'image', src: require('../images/car6.jpg') },
+  { type: 'image', src: require('../images/car37.jpg') },
   { type: 'image', src: require('../images/car7.jpg') },
   { type: 'image', src: require('../images/car8.jpg') },
   { type: 'image', src: require('../images/car9.jpg') },
@@ -32,9 +32,9 @@ const mediaItems = [
   { type: 'image', src: require('../images/car32.jpg') },
   { type: 'image', src: require('../images/car33.jpg') },
   { type: 'image', src: require('../images/car34.jpg') },
-  { type: 'image', src: require('../images/car35.jpg') },
+  { type: 'image', src: require('../images/car2.jpg') },
   { type: 'image', src: require('../images/car36.jpg') },
-  { type: 'image', src: require('../images/car37.jpg') },
+  { type: 'image', src: require('../images/car6.jpg') },
   { type: 'image', src: require('../images/car38.jpg') },
   { type: 'image', src: require('../images/car39.jpg') },
   { type: 'image', src: require('../images/car40.jpg') },
@@ -42,7 +42,7 @@ const mediaItems = [
   { type: 'image', src: require('../images/car42.jpg') },
   { type: 'image', src: require('../images/car43.jpg') },
   { type: 'image', src: require('../images/car44.jpg') },
-  { type: 'image', src: require('../images/car45.jpg') },
+  { type: 'image', src: require('../images/car1.jpg') },
   { type: 'image', src: require('../images/car46.jpg') },
   { type: 'image', src: require('../images/car47.jpg') },
   { type: 'image', src: require('../images/car48.jpg') },
@@ -50,7 +50,7 @@ const mediaItems = [
   { type: 'image', src: require('../images/car50.jpg') },
   { type: 'image', src: require('../images/car51.jpg') },
   { type: 'video', src: require('../videos/vid4.mp4') },
-  { type: 'video', src: require('../videos/vid13.mov') },
+  { type: 'video', src: require('../videos/vid13.mp4') },
 ]
 
 export default mediaItems;
